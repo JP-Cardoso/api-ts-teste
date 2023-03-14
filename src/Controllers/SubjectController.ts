@@ -7,13 +7,11 @@ export class SubjectController {
         const { name } = req.body;
 
         if(!name) {
-            return res.status(400).json({message: 'The name field is required'});
-        
+            return res.status(400).json({message: 'The name field is required'});       
         } 
-
         try {
             const newSubject = subjectRepository.create({ name });
-        
+                    
             await subjectRepository.save(newSubject);
             return res.status(201).json(newSubject);
 
